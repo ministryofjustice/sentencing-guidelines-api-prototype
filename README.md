@@ -10,6 +10,17 @@ Currently, the process of requesting legal aid involves solicitors and providers
 
 Produce an API that would allow us to look up sentencing guidelines programmatically and allow caseworkers to easily navigate through them so they can find guidelines in a more efficient and cosistent manner.
 
-## Problems:
+## Problems
 - Guidelines are structured slightly differently.
 - At the moment Case Workers process applications having lot of different pages opened in their browser (MAAT, Eform, the sentencing guidelines website)
+
+## Running the app
+
+- Create a virtualenv `virtualenv env`
+- Activate it `source env/bin/activate`
+- Install requirements `pip install -r requirements.txt`
+- Run the migrations `python manage.py migrate`
+- Create a superuser account `python manage.py createsuperuser --email admin@example.com --username admin`
+- Run the app `python manage.py runserver`
+
+The app should then be available at http://127.0.0.1:8000/
