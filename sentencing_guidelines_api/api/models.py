@@ -9,9 +9,10 @@ class ReferencedActSection(models.Model):
     def __str__(self):
         return f'{self.act_name} - §{self.section}'
 
+
 class Offence(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    offense_name = models.CharField(max_length=100)
+    offence_name = models.CharField(max_length=100)
     referenced_acts = models.ManyToManyField(ReferencedActSection, blank=True)
     effective_from = models.DateField(blank=True, null=True)
 

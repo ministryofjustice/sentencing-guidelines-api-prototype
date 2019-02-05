@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
+from .models import Offence
 from rest_framework import viewsets
-from sentencing_guidelines_api.api.serializers import UserSerializer, GroupSerializer
+from sentencing_guidelines_api.api.serializers import UserSerializer, GroupSerializer, OffenceSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,3 +18,12 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class OffenceViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Offence.objects.all()
+    serializer_class = OffenceSerializer
+
