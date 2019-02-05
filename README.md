@@ -1,6 +1,6 @@
 # Sentencing guidelines API prototype
 
-A prototype API for providing offences and sentencing guideline.
+A prototype API for providing offences and sentencing guidelines.
 
 ## Description
 
