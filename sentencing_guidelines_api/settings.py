@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'sentencing_guidelines_api.api',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
