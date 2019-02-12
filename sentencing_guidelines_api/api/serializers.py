@@ -18,4 +18,4 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class OffenceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Offence
-        fields = ('offence_name',)
+        fields = ('offence_name','effective_from')
