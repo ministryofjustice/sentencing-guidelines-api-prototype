@@ -17,7 +17,7 @@ class Offence(models.Model):
     effective_from = models.DateField(blank=True, null=True)
 
     def __str__(self):
-        return self.offense_name
+        return self.offence_name
 
 admin.site.register(Offence)
 admin.site.register(ReferencedActSection)
