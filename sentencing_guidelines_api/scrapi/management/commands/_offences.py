@@ -25,7 +25,7 @@ class OffenceScraper:
             except AttributeError:
                 offence_data["act"] = ""
             try:
-                offence_data["effective_data"] = self.get_effective_date(local_soup).replace("\t", "")
+                offence_data["effective_date"] = self.get_effective_date(local_soup).replace("\t", "").strip()
             except AttributeError:
                 offence_data[offence_name]["effective_data"] = ""
 #            print(loop_count, offence_name)
@@ -44,7 +44,7 @@ class OffenceScraper:
 
 
 # offence_scraper = OffenceScraper()
-# offence_scraper.get_offences()
+# offences = offence_scraper.get_offences()
 # pprint.pprint(offence_scraper.offences)
 #
 # offence_scraper.export_date()
