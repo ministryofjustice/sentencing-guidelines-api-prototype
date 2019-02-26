@@ -1,5 +1,5 @@
 bs4==0.0.1
-Django==2.1.6
+Django==2.1.7
 djangorestframework==3.9.1
 pytz==2018.9
 requests==2.21.0
