@@ -13,8 +13,7 @@ class Command(BaseCommand):
         scraper = OffenceScraper()
         offences = scraper.get_offences(5)
         for offence in offences:
-            model, _created = models.Offence.objects.update_or_create(offence_name=offence["name"]) #, defaults = {"effective_from": offence["effective_date"]})
-            model.save()
+            model, _created = models.Offence.objects.update_or_create(offence_name=offence["name"], defaults = {"effective_from": offence["effective_date"]})
             self.stdout.write(self.style.SUCCESS(model))
             pprint.pprint(offence, indent=4)
 

@@ -4,4 +4,4 @@ djangorestframework==3.9.1
 pytz==2018.9
 requests==2.21.0
 python-dotenv[cli]
-
+dateparser==0.7.1
