@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,14 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!j0sh4^8j(7h+3trzch+(nm=)q&alfn2*k@!(*o$r9cv^7zhbi'
+SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG = bool(os.environ.get('DEBUG', ''))
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+CSRF_COOKIE_SECURE = not os.environ.get("INSECURE", '')
+SESSION_COOKIE_SECURE = not os.environ.get("INSECURE", '')
 
-ALLOWED_HOSTS = []
-
+allowed_hosts_string = os.environ.get('ALLOWED_HOSTS', '')
+ALLOWED_HOSTS = allowed_hosts_string.split(',') if allowed_hosts_string else []
 
 # Application definition
 
@@ -75,10 +77,13 @@ WSGI_APPLICATION = 'sentencing_guidelines_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+LOCAL_ENGINE = 'django.db.backends.sqlite3'
+LOCAL_NAME = os.path.join(BASE_DIR, 'db.sqlite3')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': os.environ.get('DATABASE_ENGINE', LOCAL_ENGINE),
+        'NAME': os.environ.get('DATABASE_NAME', LOCAL_NAME),
     }
 }
 
@@ -105,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 

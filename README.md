@@ -16,11 +16,12 @@ Produce an API that would allow us to look up sentencing guidelines programmatic
 
 ## Running the app
 
-- Create a virtualenv `virtualenv env`
-- Activate it `source env/bin/activate`
-- Install requirements `pip install -r requirements.txt`
+- Create a virtualenv: `virtualenv env`
+- Activate it: `source env/bin/activate`
+- Install dependencies: `pip install -r requirements.txt`
 - Run the migrations `python manage.py migrate`
 - Create a superuser account `python manage.py createsuperuser --email admin@example.com --username admin`
+- Configure the local environment: `cp .env-local .env`
 - Run the app `python manage.py runserver`
 
 The app should then be available at http://127.0.0.1:8000/
