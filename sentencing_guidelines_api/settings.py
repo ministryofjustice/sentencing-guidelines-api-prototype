@@ -34,6 +34,7 @@ ALLOWED_HOSTS = allowed_hosts_string.split(',') if allowed_hosts_string else []
 
 INSTALLED_APPS = [
     'sentencing_guidelines_api.api',
+    'sentencing_guidelines_api.scrapi',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
