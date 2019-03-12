@@ -31,6 +31,10 @@ SESSION_COOKIE_SECURE = not os.environ.get("INSECURE", '')
 allowed_hosts_string = os.environ.get('ALLOWED_HOSTS', '')
 ALLOWED_HOSTS = allowed_hosts_string.split(',') if allowed_hosts_string else []
 
+print(ALLOWED_HOSTS)
+print(SESSION_COOKIE_SECURE)
+print(DEBUG)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -135,47 +139,9 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100
 }
 
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
-                        'pathname=%(pathname)s lineno=%(lineno)s ' +
-                        'funcname=%(funcName)s %(message)s'),
-            'datefmt': '%Y-%m-%d %H:%M:%S'
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        }
-    },
-    'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'logging.NullHandler',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        }
-    },
-    'loggers': {
-        'testlogger': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-        }
-    }
-}
-
-django_heroku.settings(locals(), logging=False)
+django_heroku.settings(locals(), staticfiles=False)
