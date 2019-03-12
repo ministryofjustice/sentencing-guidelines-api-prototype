@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -78,13 +79,19 @@ WSGI_APPLICATION = 'sentencing_guidelines_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-LOCAL_ENGINE = 'django.db.backends.sqlite3'
-LOCAL_NAME = os.path.join(BASE_DIR, 'db.sqlite3')
+LOCAL_ENGINE = 'django.db.backends.postgresql_psycopg2'
+LOCAL_NAME = 'sentencing_guidelines'
+DB_USER = 'sentencing_guidelines'
+DB_PASSWORD = os.environ['DATABASE_PASSWORD']
 
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DATABASE_ENGINE', LOCAL_ENGINE),
         'NAME': os.environ.get('DATABASE_NAME', LOCAL_NAME),
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
@@ -131,3 +138,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100
 }
+
+django_heroku.settings(locals())

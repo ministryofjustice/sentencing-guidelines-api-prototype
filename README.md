@@ -14,8 +14,16 @@ Produce an API that would allow us to look up sentencing guidelines programmatic
 - Guidelines are structured slightly differently.
 - At the moment Case Workers process applications having lot of different pages opened in their browser (MAAT, Eform, the sentencing guidelines website)
 
-## Running the app
+## Set up a database for local development
+Install postgres if you don't have it: https://postgresapp.com/
 
+Create the database:
+- `createdb sentencing_guidelines`
+
+Start a `psql` shell and run:
+- `CREATE USER sentencing_guidelines WITH PASSWORD '12345678';`
+
+## Running the app
 - Create a virtualenv: `virtualenv env`
 - Activate it: `source env/bin/activate`
 - Install dependencies: `pip install -r requirements.txt`
