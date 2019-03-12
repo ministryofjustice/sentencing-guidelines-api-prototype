@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    #'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'sentencing_guidelines_api.wsgi.application'
 LOCAL_ENGINE = 'django.db.backends.postgresql_psycopg2'
 LOCAL_NAME = 'sentencing_guidelines'
 DB_USER = 'sentencing_guidelines'
-DB_PASSWORD = os.environ['DATABASE_PASSWORD']
+DB_PASSWORD = os.environ.get('DATABASE_PASSWORD', 'DUMMY_VALUE')
 
 DATABASES = {
     'default': {
@@ -132,7 +132,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
