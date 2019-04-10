@@ -1,7 +1,7 @@
 bs4==0.0.1
 Django==2.1.8
 djangorestframework==3.9.2
-pytz==2018.9
+pytz==2019.1
 requests==2.21.0
 python-dotenv[cli]
 dateparser==0.7.1
